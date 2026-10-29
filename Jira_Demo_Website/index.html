@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6255dc">
+  <title>Student Management System | Project Workspace</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="improvements.css">
+  <link rel="stylesheet" href="insights.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">J</div>
+      <div><h3>Jira Workspace</h3><p class="muted">Software Project Management</p></div>
+    </div>
+    <hr>
+    <p class="label">WORKSPACE</p>
+    <nav aria-label="Workspace navigation">
+      <a class="nav-link" href="#overview" data-view="overview" aria-current="page"><span aria-hidden="true">◫</span> Overview</a>
+      <a class="nav-link" href="#board" data-view="board"><span aria-hidden="true">▦</span> Project board</a>
+      <a class="nav-link" href="#team" data-view="team"><span aria-hidden="true">♧</span> Team</a>
+      <a class="nav-link" href="#sprints" data-view="sprints"><span aria-hidden="true">◷</span> Sprints</a>
+      <a class="nav-link" href="#reports" data-view="reports"><span aria-hidden="true">▤</span> Reports</a>
+      <a class="nav-link" href="#insights" data-view="insights"><span aria-hidden="true">✦</span> Smart insights</a>
+    </nav>
+    <p class="label">YOUR PROJECT</p>
+    <div class="project"><b>SM</b> Student Management System</div>
+    <div class="profile"><b id="profileAvatar">LR</b><span id="profileText">Lisha<br><small>Demo workspace</small></span></div>
+  </aside>
+
+  <main>
+    <header>
+      <span id="breadcrumb">Projects / Student Management System / Overview</span>
+      <div class="header-actions"><button class="secondary" id="themeToggle" aria-label="Switch to dark mode">☾ Dark mode</button><button class="secondary" id="authButton">Demo sign in</button><button class="primary" id="createTop">＋ Create issue</button></div>
+    </header>
+
+    <section class="view" id="overview" aria-labelledby="overviewTitle">
+      <section class="hero">
+        <div>
+          <small>● PROJECT WORKSPACE</small>
+          <h1 id="overviewTitle">Student Management System</h1>
+          <p>Plan work, manage tasks, and track your team's progress in one place.</p>
+          <span class="muted">◷ Your project at a glance · Kanban workflow</span>
+        </div>
+        <div class="hero-art"><div>✓ Stay organized<br><small>Every task has a place</small></div><strong>SM</strong></div>
+      </section>
+
+      <section class="stats" aria-label="Project statistics">
+        <article><span>Total issues</span><b id="total">0</b><small>All project work items</small></article>
+        <article><span>To do</span><b id="todo">0</b><small>Ready to be picked up</small></article>
+        <article><span>In progress</span><b id="progress">0</b><small>Currently being worked on</small></article>
+        <article><span>Completed</span><b id="done">0</b><small id="percent">0% of all issues</small><div class="bar"><i id="bar"></i></div></article>
+      </section>
+
+      <section class="overview-grid">
+        <article class="overview-panel">
+          <div class="panel-heading"><div><h2>Workflow snapshot</h2><p class="muted">Issues grouped by current status.</p></div></div>
+          <div id="workflowSnapshot" class="workflow-snapshot"></div>
+        </article>
+        <article class="overview-panel">
+          <div class="panel-heading"><div><h2>Recently added</h2><p class="muted">The latest work in this project.</p></div><a href="#board" class="text-link">View board →</a></div>
+          <div id="recentIssues" class="recent-issues"></div>
+        </article>
+      </section>
+    </section>
+
+    <section class="view hidden" id="team" aria-labelledby="teamTitle" hidden>
+      <div class="heading"><div><h1 id="teamTitle">Team members</h1><p class="muted">Manage the people available to assign to project work.</p></div><button id="addMember" class="primary">＋ Add member</button></div>
+      <div id="teamList" class="team-grid"></div>
+    </section>
+
+    <section class="view hidden" id="sprints" aria-labelledby="sprintsTitle" hidden>
+      <div class="heading"><div><h1 id="sprintsTitle">Sprint planning</h1><p class="muted">Plan time-boxed work and track sprint progress.</p></div></div>
+      <form id="sprintForm" class="overview-panel sprint-form">
+        <h2>Create a sprint</h2>
+        <div class="sprint-fields"><label>Sprint name<input id="sprintName" required maxlength="60" placeholder="e.g. Sprint 2"></label><label>Start date<input id="sprintStart" type="date" required></label><label>End date<input id="sprintEnd" type="date" required></label></div>
+        <label>Sprint goal<input id="sprintGoal" maxlength="160" placeholder="What should the team deliver?"></label>
+        <button class="primary">＋ Create sprint</button>
+      </form>
+      <div id="sprintList" class="sprint-list"></div>
+    </section>
+
+    <section class="view hidden" id="reports" aria-labelledby="reportsTitle" hidden>
+      <div class="heading"><div><h1 id="reportsTitle">Reports &amp; charts</h1><p class="muted">A live summary of project work and team workload.</p></div><button id="reportExport" class="secondary">↓ Export report</button></div>
+      <section class="stats report-stats" aria-label="Report metrics">
+        <article><span>Completion rate</span><b id="reportCompletion">0%</b><small>Issues marked done</small></article>
+        <article><span>Overdue issues</span><b id="reportOverdue">0</b><small>Past due and not completed</small></article>
+        <article><span>Active sprints</span><b id="reportSprints">0</b><small>Currently in progress</small></article>
+        <article><span>Team members</span><b id="reportMembers">0</b><small>Project contributors</small></article>
+      </section>
+      <div class="overview-grid">
+        <article class="overview-panel"><div class="panel-heading"><div><h2>Issues by status</h2><p class="muted">Current workflow distribution.</p></div></div><div id="statusChart" class="report-chart"></div></article>
+        <article class="overview-panel"><div class="panel-heading"><div><h2>Issues by priority</h2><p class="muted">Where the team's attention is focused.</p></div></div><div id="priorityChart" class="report-chart"></div></article>
+      </div>
+      <article class="overview-panel"><div class="panel-heading"><div><h2>Team workload</h2><p class="muted">Assigned issues per member.</p></div></div><div id="workloadChart" class="report-chart"></div></article>
+    </section>
+
+    <section class="view hidden" id="insights" aria-labelledby="insightsTitle" hidden>
+      <div class="heading insights-heading"><div><span class="insights-eyebrow">PROJECT ANALYTICS</span><h1 id="insightsTitle">Smart project insights</h1><p class="muted">Spot delivery risks, remove blockers, and plan your team's next move.</p></div></div>
+      <div class="insights-grid">
+        <article class="overview-panel"><div class="panel-heading"><div><h2>Task risk predictor</h2><p class="muted">Rules-based risk scores from due dates, workload, and blockers.</p></div></div><div id="riskList" class="insight-list"></div></article>
+        <article class="overview-panel"><div class="panel-heading"><div><h2>Blocker detective</h2><p class="muted">Flags work in progress for 3+ days or descriptions mentioning blockers.</p></div></div><div id="blockerList" class="insight-list"></div></article>
+        <article class="overview-panel"><div class="panel-heading"><div><h2>Workload balancer</h2><p class="muted">Suggestions only—review before reassigning open work.</p></div></div><div id="balanceList" class="insight-list"></div></article>
+        <article class="overview-panel"><div class="panel-heading"><div><h2>Smart task splitter</h2><p class="muted">Turn a large task into editable, suggested steps.</p></div></div><label class="insight-label">Choose a task<select id="splitTask"></select></label><button id="generateSplit" class="secondary">Suggest subtasks</button><div id="splitSuggestions" class="split-suggestions"></div></article>
+        <article class="overview-panel"><div class="panel-heading"><div><h2>Team pulse</h2><p class="muted">Optional daily check-in. Responses are local and visible to anyone using this browser.</p></div></div><form id="pulseForm" class="pulse-form"><label>Team member<select id="pulseMember" required></select></label><label><span>Workload today: <output id="workloadValue">3</output>/5</span><input id="pulseWorkload" type="range" min="1" max="5" value="3"></label><label><span>Stress today: <output id="stressValue">2</output>/5</span><input id="pulseStress" type="range" min="1" max="5" value="2"></label><label>Optional note<textarea id="pulseNote" maxlength="240" rows="2" placeholder="Anything you'd like your team to know?"></textarea></label><button class="primary">Save today's check-in</button></form><div id="pulseSummary" class="pulse-summary"></div></article>
+        <article class="overview-panel"><div class="panel-heading"><div><h2>What-if sprint simulator</h2><p class="muted">A rough estimate from planned story points and team capacity; not a delivery guarantee.</p></div></div><form id="simulatorForm" class="simulator-form"><label>Sprint<select id="simSprint"></select></label><label>Extra work to add (points)<input id="simExtraPoints" type="number" min="0" max="100" value="0"></label><label>Delay planned work by (days)<input id="simDelayDays" type="number" min="0" max="30" value="0"></label><label>Capacity per member (points / sprint)<input id="simCapacity" type="number" min="1" max="100" value="10"></label></form><div id="simResult" class="sim-result"></div></article>
+        <article class="overview-panel"><div class="panel-heading"><div><h2>Eco progress score</h2><p class="muted">A small self-reported measure of sustainable, paperless collaboration.</p></div></div><div class="eco-score"><b id="ecoScore">0</b><span>/100</span></div><p id="ecoSummary" class="muted"></p><form id="ecoForm" class="eco-actions"><label><input type="checkbox" value="digital-planning"> Plan and share work digitally</label><label><input type="checkbox" value="paperless-reviews"> Review and approve work without printing</label><label><input type="checkbox" value="remote-collaboration"> Prefer remote collaboration when practical</label><label><input type="checkbox" value="energy-aware"> Use energy-conscious work practices</label><button class="primary">Save sustainability actions</button></form></article>
+      </div>
+    </section>
+
+    <section class="view hidden" id="board" aria-labelledby="boardTitle" hidden>
+      <div class="heading">
+        <div><h1 id="boardTitle">Project board</h1><p class="muted">Move issues through the workflow and keep work visible.</p></div>
+        <button id="reset" class="secondary">↺ Reset demo</button>
+      </div>
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="⌕ Search issues..." aria-label="Search issues">
+        <select id="filter" aria-label="Filter by priority"><option value="all">All priorities</option><option>High</option><option>Medium</option><option>Low</option></select>
+        <select id="filterType" aria-label="Filter by issue type"><option value="all">All issue types</option><option>Task</option><option>Story</option><option>Bug</option></select>
+        <button id="clearFilters" class="secondary">Clear filters</button>
+        <button id="export" class="secondary">↓ Export CSV</button>
+        <button id="create" class="primary">＋ Create issue</button>
+      </div>
+      <p class="results-label" id="resultsLabel" aria-live="polite"></p>
+      <div class="columns" id="columns"></div>
+    </section>
+
+  </main>
+
+  <div class="shade hidden" id="shade">
+    <form id="form" class="modal">
+      <div class="modalhead">
+        <div><h2 id="modalTitle">Create issue</h2><p class="muted">Add or update work on your project board.</p></div>
+        <button type="button" id="close" class="x" aria-label="Close dialog">×</button>
+      </div>
+      <label>Issue summary<input id="title" required maxlength="100" placeholder="e.g. Build student profile page"></label>
+      <label>Description<textarea id="description" rows="3" maxlength="500" placeholder="What needs to be done?"></textarea></label>
+      <div class="formrow">
+        <label>Issue type<select id="type"><option>Task</option><option>Story</option><option>Bug</option></select></label>
+        <label>Priority<select id="priority"><option>Medium</option><option>High</option><option>Low</option></select></label>
+      </div>
+      <div class="formrow">
+        <label>Status<select id="status"><option>To Do</option><option>In Progress</option><option>Done</option></select></label>
+        <label>Assignee<select id="assignee"></select></label>
+      </div>
+      <p class="email-notice">Assigning an issue opens a prefilled email draft for that member. Review and send it in your mail app.</p>
+      <div class="formrow"><label>Due date<input id="dueDate" type="date"></label><label>Estimate<input id="estimatePoints" type="number" min="0.5" max="100" step="0.5" value="2"> story points</label></div>
+      <label>Sprint<select id="taskSprint"><option value="">Backlog (no sprint)</option></select></label>
+      <div class="actions"><button type="button" id="cancel" class="secondary">Cancel</button><button class="primary" id="saveIssue">Create issue</button></div>
+    </form>
+  </div>
+  <div class="shade hidden" id="memberShade">
+    <form id="memberForm" class="modal">
+      <div class="modalhead"><div><h2 id="memberModalTitle">Add team member</h2><p class="muted">Add a project contributor to the local demo workspace.</p></div><button type="button" class="x" data-close="memberShade" aria-label="Close dialog">×</button></div>
+      <label>Display name<input id="memberName" required maxlength="60" placeholder="e.g. Jordan Lee"></label>
+      <label>Email address<input id="memberEmail" type="email" required maxlength="120" placeholder="name@example.com"></label>
+      <div class="actions"><button type="button" class="secondary" data-close="memberShade">Cancel</button><button class="primary">Save member</button></div>
+    </form>
+  </div>
+  <div class="shade hidden" id="authShade">
+    <form id="authForm" class="modal">
+      <div class="modalhead"><div><h2 id="authTitle">Demo sign in</h2><p class="muted">Local demo profile only—not real authentication.</p></div><button type="button" class="x" data-close="authShade" aria-label="Close dialog">×</button></div>
+      <p class="auth-notice">This standalone app has no server. Profiles are stored only in this browser and do not use passwords or provide account security.</p>
+      <label id="authNameField" hidden>Display name<input id="authName" maxlength="60" placeholder="Your name"></label>
+      <label>Email address<input id="authEmail" type="email" required maxlength="120" placeholder="you@example.com"></label>
+      <div class="actions"><button type="button" class="secondary" id="authMode">Create profile</button><button class="primary" id="authSubmit">Continue</button></div>
+    </form>
+  </div>
+  <div class="shade hidden" id="splitShade">
+    <form id="splitForm" class="modal">
+      <div class="modalhead"><div><h2>Split task into subtasks</h2><p id="splitParent" class="muted"></p></div><button type="button" class="x" data-close="splitShade" aria-label="Close dialog">×</button></div>
+      <p class="muted">Edit the suggested steps before creating them. The original task will stay on the board.</p>
+      <div id="splitInputs" class="split-inputs"></div>
+      <div class="actions"><button type="button" class="secondary" data-close="splitShade">Cancel</button><button class="primary">Create subtasks</button></div>
+    </form>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

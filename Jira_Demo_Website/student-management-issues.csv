@@ -1,0 +1,6 @@
+﻿"Key","Type","Summary","Description","Priority","Status","Assignee"
+"SMS-1","Task","Design login page","Create a clean login screen for students and administrators.","High","To Do","Lisha"
+"SMS-2","Story","Develop student registration","Build the registration form with required field validation.","Medium","In Progress","Arjun"
+"SMS-3","Task","Test login functionality","Check valid credentials, invalid credentials, and error messages.","Medium","Done","Meera"
+"SMS-4","Bug","Fix login validation bug","Resolve the issue where empty fields are accepted.","High","To Do","Lisha"
+"SMS-5","Task","Prepare project documentation","Document the system requirements and testing process.","Low","To Do","Arjun"
